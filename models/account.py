@@ -12,6 +12,10 @@ class Account(db.Model):
     currency = db.Column(db.String(3), nullable=False)  # "PEN", "USD"
     balance = db.Column(db.Float, default=0.0)
 
+
+    # Número de cuenta visible al usuario (único)
+    nro_cuenta = db.Column(db.String(20), unique=True, nullable=False)
+
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     user = db.relationship("User", back_populates="accounts")
 

@@ -7,6 +7,14 @@ from database.db import db
 #db = SQLAlchemy()
 
 
+"""
+{
+    "nro_account_from": nro_cuenta
+    "nro_account_to": nro_cuenta
+    "amount": cantidad
+}
+
+"""
 from datetime import datetime
 
 class Transaction(db.Model):

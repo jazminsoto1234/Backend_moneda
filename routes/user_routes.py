@@ -5,6 +5,7 @@ from models.account import Account
 from models.transaction import Transaction
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_jwt_extended import create_access_token
+from services.generar_account import generar_nro_cuenta
 
 user_bp = Blueprint("user", __name__)
 
@@ -28,9 +29,10 @@ def register():
     db.session.add(user)
     db.session.commit()
 
+    # creamos un random de nro de cuenta
     # Crear cuentas PEN y USD
     for currency in ["PEN", "USD"]:
-        acc = Account(user_id=user.id, currency=currency, balance=0.0)
+        acc = Account(user_id=user.id, currency=currency, nro_cuenta = generar_nro_cuenta() , balance=0.0)
         db.session.add(acc)
 
     db.session.commit()
@@ -52,7 +54,7 @@ def login():
     data = request.json
     user = User.query.filter_by(username=data["username"]).first()
     if user and user.check_password(data["password"]):
-        token = create_access_token(identity=user.id)
+        token = create_access_token(identity=str(user.id))
         return jsonify({"access_token": token})
     return jsonify({"error": "Credenciales inválidas"}), 401
 
@@ -64,11 +66,37 @@ def get_account():
     user_id = int(get_jwt_identity())
     accounts = Account.query.filter_by(user_id=user_id).all()
     result = [
-        {"id": acc.id, "currency": acc.currency, "balance": acc.balance}
+        {"id": acc.id, "nro_cuenta" : acc.nro_cuenta ,  "currency": acc.currency, "balance": acc.balance}
         for acc in accounts
     ]
     return jsonify(result)
 
+
+@user_bp.route("/addmoney", methods=["PATCH"])
+@jwt_required()
+def add_money():
+    data = request.json
+    user_id = int(get_jwt_identity())
+    account_id = data.get("id")
+    amount = data.get("amount", 0)
+
+    #Validacion
+    if not account_id or amount is None or amount <= 0:
+        return jsonify({"error": "Datos invalidos"}), 400
+
+    #Verficamos que pertenezca al usuario
+    account = Account.query.filter_by(id=account_id, user_id=user_id).first()
+    if not account:
+        return jsonify({"error": "Cuenta no encontrada o no autorizada"}), 404
+
+    # Aumentar el saldo
+    account.balance += amount
+    db.session.commit()
+
+    return jsonify({
+        "message": "Monto agregado exitosamente",
+        "new_balance": account.balance
+    }), 200
 
 
 
@@ -87,7 +115,7 @@ def get_historial():
         (Transaction.to_account_id.in_(account_ids))
     ).order_by(Transaction.timestamp.desc()).all()
 
-    # Formatear respuesta
+    # Respuesta
     historial = []
     for tx in transacciones:
         historial.append({

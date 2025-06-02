@@ -30,8 +30,15 @@ def transfer():
     data = request.json
     user_id = int(get_jwt_identity())
 
-    from_account = Account.query.get(data["from_account_id"])
-    to_account = Account.query.get(data["to_account_id"])
+    from_nro = data.get("from_nro_cuenta")
+    to_nro = data.get("to_nro_cuenta")
+
+    #Buscar cuentas usando nro_cuenta
+    from_account = Account.query.filter_by(nro_cuenta=from_nro).first()
+    to_account = Account.query.filter_by(nro_cuenta=to_nro).first()
+
+    #from_account = Account.query.get(nro_cuenta =data["from_account"])
+    #to_account = Account.query.get(nro_cuenta = data["to_account"])
     amount = float(data["amount"])
 
     # Validar que la cuenta de origen sea del usuario autenticado
