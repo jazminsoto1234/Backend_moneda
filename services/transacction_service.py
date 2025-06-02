@@ -1,6 +1,7 @@
-from model.account import db, Account
-from model.transacction import Transaction
+from models.account import Account
+from models.transaction import Transaction
 import requests
+from database.db import db
 
 def perform_transfer(data):
     try:
