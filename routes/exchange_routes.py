@@ -13,7 +13,7 @@ exchange_bp = Blueprint("exchange", __name__)
 manager = ExchangeManager()
 manager.set_adapter(ExchangeRateAPIAdapter(API_KEY))
 
-@exchange_bp.route("/rate", methods=["POST"])
+@exchange_bp.route("/rate", methods=["GET"])
 def get_rate():
     from_currency = request.args.get("from")
     to_currency = request.args.get("to")
@@ -30,7 +30,7 @@ def get_code():
 
 
 
-@exchange_bp.route("/tasaconversion", methods=["POST"])
+@exchange_bp.route("/tasaconversion", methods=["GET"])
 def get_tasa():
     from_currency = request.args.get("from") # encode de que moneda
     to_currency = request.args.get("to") # a que moneda
