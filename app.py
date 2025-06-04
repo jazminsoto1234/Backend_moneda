@@ -1,7 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from models import usuario, transaction, account
-from routes.user_routes import user_bp
+try:
+    from routes.user_routes import user_bp
+except Exception as e:
+    print("❌ ERROR al importar user_bp:", e)
 from routes.exchange_routes import exchange_bp  # asegurarte que usas exchange, no transaction
 from flask_jwt_extended import JWTManager
 from database.db import db
@@ -9,9 +12,9 @@ import os
 from flask_cors import CORS
 
 
-app = Flask(__name__)
-
 def create_app():
+    app = Flask(__name__)
+
     CORS(app)
     app.config["JWT_SECRET_KEY"] = "yF&9d!cX3wzR^vM1#qLpT4jK7sUbEo"
     jwt = JWTManager(app)
@@ -33,6 +36,7 @@ def create_app():
     #app.register_blueprint(user_bp, url_prefix="/user")
     app.register_blueprint(exchange_bp, url_prefix="/exchange")
 
+    
     return app
 
 if __name__ == "__main__":
