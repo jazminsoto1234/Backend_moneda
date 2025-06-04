@@ -23,7 +23,7 @@ class ExchangeRateAPIAdapter(ExchangeInterface):
             "rate": res["conversion_rate"]
         }
     
-    def get_codes(self):
+    def get_code(self):
         url = f"https://v6.exchangerate-api.com/v6/{self.api_key}/codes"
         res = requests.get(url).json()
         return {
