@@ -8,8 +8,10 @@ from database.db import db
 import os
 from flask_cors import CORS
 
+
+app = Flask(__name__)
+
 def create_app():
-    app = Flask(__name__)
     CORS(app)
     app.config["JWT_SECRET_KEY"] = "yF&9d!cX3wzR^vM1#qLpT4jK7sUbEo"
     jwt = JWTManager(app)
