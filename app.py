@@ -31,6 +31,9 @@ def create_app():
     # Inicializar base de datos
     db.init_app(app)
 
+    with app.app_context():
+        db.create_all()
+
     # Registrar Blueprints
     app.register_blueprint(user_bp, url_prefix="/user")
     #app.register_blueprint(user_bp, url_prefix="/user")
