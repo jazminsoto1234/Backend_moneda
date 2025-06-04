@@ -81,6 +81,19 @@ def get_account():
     return jsonify(result)
 
 
+@user_bp.route("/information", methods=["GET"])
+@jwt_required()
+def get_information():
+    user_id = int(get_jwt_identity())
+    usuario = User.query.filter_by(id=user_id).first()
+    result = [
+        {"id": usuario.id, "usermame" :usuario.username , "email": usuario.email}
+        
+    ]
+    return jsonify(result)
+
+
+
 @user_bp.route("/addmoney", methods=["PATCH"])
 @jwt_required()
 def add_money():
