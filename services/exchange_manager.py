@@ -15,3 +15,13 @@ class ExchangeManager:
         if not self._adapter:
             raise Exception("No adapter configured")
         return self._adapter.get_conversion(from_currency, to_currency, amount)
+    
+    def tasa(self, from_currency, to_currency):
+        if not self._adapter:
+            raise Exception("No adapter configured")
+        return self._adapter.get_tasa(from_currency, to_currency)
+
+    def code(self):
+        if not self._adapter:
+            raise Exception("No adapter configured")
+        return self._adapter.get_codes()
