@@ -5,16 +5,22 @@ from routes.user_routes import user_bp
 from routes.exchange_routes import exchange_bp  # asegurarte que usas exchange, no transaction
 from flask_jwt_extended import JWTManager
 from database.db import db
+import os
+from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app.config["JWT_SECRET_KEY"] = "yF&9d!cX3wzR^vM1#qLpT4jK7sUbEo"
     jwt = JWTManager(app)
 
 
     
     # Configuración de la base de datos SQLite
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////home/jazmin/exchange_db.db"
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    db_path = os.path.join(basedir, 'database', 'exchange_database.db')
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
+    #app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'exchange_database.db')}"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
     # Inicializar base de datos
