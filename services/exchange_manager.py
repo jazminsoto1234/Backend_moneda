@@ -24,4 +24,4 @@ class ExchangeManager:
     def code(self):
         if not self._adapter:
             raise Exception("No adapter configured")
-        return self._adapter.get_codes()
+        return self._adapter.get_code()
