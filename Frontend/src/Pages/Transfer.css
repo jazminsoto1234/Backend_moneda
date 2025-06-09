@@ -1,0 +1,240 @@
+/* Transfer.css */
+
+.transfer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.transfer-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 2rem;
+}
+
+/* --------------------------------------------------
+   B) Recuadro de saldo (arriba)
+   -------------------------------------------------- */
+.transfer-balance-card {
+  width: 100%;
+  max-width: 500px;
+  background: linear-gradient(135deg, #6b21a8, #9333ea);
+  color: white;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.transfer-balance-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.transfer-balance-label {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.transfer-balance-amount {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.transfer-account-number {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Ícono opcional (derecha) */
+.transfer-balance-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* --------------------------------------------------
+   C) Formulario de transferencia
+   -------------------------------------------------- */
+.transfer-form {
+  width: 100%;
+  max-width: 500px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.transfer-label {
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.transfer-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Para el monto, ponemos el símbolo junto al input */
+.transfer-amount-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #f9fafb;
+}
+
+.transfer-currency-symbol {
+  padding: 0.75rem 1rem;
+  background-color: #f9fafb;
+  color: #374151;
+  font-size: 1rem;
+  border-right: 1px solid #d1d5db;
+}
+
+.transfer-input-amount {
+  flex: 1;
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+/* Error en rojo */
+.transfer-error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------
+   D) Botones de Confirmar/Cancelar
+   -------------------------------------------------- */
+.transfer-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.transfer-btn {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
+  box-sizing: border-box;
+}
+
+.transfer-btn.confirm {
+  background-color: #10b981; /* verde */
+  color: white;
+}
+
+.transfer-btn.confirm:disabled {
+  background-color: #6ee7b7; /* verde tenue al deshabilitar */
+  cursor: not-allowed;
+}
+
+.transfer-btn.cancel {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.transfer-btn.cancel:hover {
+  background-color: #e5e7eb;
+}
+
+/* --------------------------------------------------
+   E) Modal de éxito
+
+   
+   -------------------------------------------------- */
+/* Ajusta según el Modal que uses */
+
+
+/* Contenedor del contenido dentro del modal */
+.transfer-modal-content {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 320px;
+  width: 90%;
+  box-sizing: border-box;
+
+  /* AÑADIR: convertir en flex-column para centrar sus hijos */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Ya no hace falta text-align: center; porque flex centra todo */
+}
+
+/* Título del modal (por ej.: “Transferencia exitosa”) */
+.transfer-modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 1rem;
+
+  /* Aseguramos que ocupe 100% de ancho para alinear bien */
+  width: 100%;
+  text-align: center;
+}
+
+/* Texto que muestra “Se transfirieron PEN 20,00” */
+.transfer-modal-amount {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 1.5rem;
+
+  /* También ocupa 100% para centrar internamente */
+  width: 100%;
+  text-align: center;
+}
+
+/* Ícono de check */
+.transfer-modal-check {
+  width: 50px;
+  height: 50px;         /* lo ajustamos a 50×50 para que quede cuadrado */
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+
+  /* No hace falta margen extra izquierdo o derecho: flex-centra */
+}
+
+/* Botón “Cerrar” dentro del modal */
+.transfer-modal-close {
+  background-color: #10b981; /* verde */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  /* Que ocupe sólo lo justo, y luego centrado por flex */
+  width: auto;
+}
+
+.transfer-modal-close:hover {
+  background-color: #059669;
+}

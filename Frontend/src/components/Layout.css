@@ -1,0 +1,77 @@
+/* Layout.css */
+
+/* Contenedor global: sidebar + área principal */
+.layout-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background-color: #1f2937; /* gris oscuro */
+  color: white;
+  width: 240px;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+}
+
+.sidebar-logo {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.sidebar-logo h2 {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  color: white;                /* texto en blanco */
+  background-color: #5b5d64;   /* gris predeterminado */
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.sidebar-link:hover {
+  background-color: #374151;   /* opcional: un gris más oscuro al pasar el ratón */
+}
+
+.sidebar-link.active {
+  background-color: transparent;
+  color: white;
+}
+
+.sidebar-link.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Icono + texto al lado */
+.sidebar-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.75rem;
+}
+
+/* CONTENIDO PRINCIPAL */
+.main-content {
+  flex: 1;
+  background-color: #f9fafb; /* gris muy claro de fondo */
+  padding: 2rem;
+  overflow-y: auto;
+}

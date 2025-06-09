@@ -1,0 +1,229 @@
+/* CardDetails.css */
+
+/* Contenedor general (fondo blanco, centrado en columna) */
+.cd-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+/* 1) Título en negro */
+.cd-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 2rem;
+}
+
+/* 2) Recuadro “tarjeta” */
+.cd-card-preview {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 150px;
+  background: linear-gradient(90deg, #1f2937 0%, #374151 100%); /* degradado oscuro */
+  border-radius: 1rem;
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Puntos de número de tarjeta */
+.cd-card-dots {
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+}
+
+/* Línea que agrupa “Card Holder” y “Expires” */
+.cd-card-details-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* Etiqueta “Card Holder” y “YOUR NAME” */
+.cd-card-holder-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cd-card-holder-label span:first-child {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.cd-card-holder-name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Etiqueta “Expires” */
+.cd-card-expiry {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.cd-card-expiry span:first-child {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.cd-card-expiry-value {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/*  Toggle switch (estilo iOS) */
+.cd-toggle-wrapper {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+.cd-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+.cd-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cd-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.2s;
+  border-radius: 999px;
+}
+
+.cd-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+.cd-switch input:checked + .cd-slider {
+  background-color: #22c55e;
+}
+
+.cd-switch input:checked + .cd-slider:before {
+  transform: translateX(18px);
+}
+
+/* 3) Formulario */
+.cd-form {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Filas con dos inputs lado a lado */
+.cd-form-row {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Grupo de etiqueta + input (columna) */
+.cd-input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Cuando el input debe ocupar 100% de ancho */
+.cd-input-group-full {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* Etiqueta de cada campo */
+.cd-form label {
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* Estilo para todos los inputs */
+.cd-input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+  background-color: #f9fafb;
+}
+
+/* Para el input que ocupa todo el ancho (card number, email) */
+.cd-input-full {
+  width: 100%;
+}
+
+/* Botón “Add Account” */
+.cd-submit-button {
+  margin-top: 1rem;
+  background-color: #3b82f6; /* azul */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cd-submit-button:hover {
+  background-color: #2563eb;
+}
+
+/* Responsive (pantallas < 768px): apilar filas verticalmente */
+@media (max-width: 768px) {
+  .cd-card-preview {
+    max-width: 100%;
+    height: auto;
+    padding: 1rem;
+  }
+  .cd-form-row {
+    flex-direction: column;
+  }
+  .cd-input-group,
+  .cd-input-group-full {
+    width: 100%;
+  }
+  .cd-submit-button {
+    width: 100%;
+  }
+}

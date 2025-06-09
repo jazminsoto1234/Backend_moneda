@@ -1,0 +1,231 @@
+/* AddAmount.css */
+
+/* 1) Contenedor principal: fondo blanco, todo centrado */
+.aa-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 100%;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+/* 1.1) Mensaje “Cargando...” */
+.aa-loading {
+  color: #374151;
+  font-size: 1rem;
+  margin-top: 2rem;
+}
+
+/* 2) Título “Add Amount” */
+.aa-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 2rem;
+}
+
+/* 3) Recuadro con el balance actual (igual a Home) */
+.aa-current-balance-card {
+  width: 100%;
+  max-width: 500px;
+  background-color: #312e81; /* mismo púrpura oscuro de Home */
+  color: white;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3.1) “Current Balance” y cantidad */
+.aa-balance-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.aa-balance-label {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.aa-balance-amount {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* 3.2) Decoración (la misma hoja de Home) */
+.aa-balance-decoration-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.aa-balance-decoration {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  opacity: 0.8;
+}
+
+/* 4) Recuadro “Enter Amount” + “New Balance” */
+.aa-entry-card {
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid #111827; /* borde negro */
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: white;
+}
+
+/* 4.1) Label “Enter Amount” */
+.aa-entry-label {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+/* 4.2) Wrapper del input con prefijo de moneda */
+.aa-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #f9fafb;
+}
+
+/* Prefijo de moneda “S/.” o “$” */
+.aa-currency-prefix {
+  padding: 0.75rem 1rem;
+  background-color: #f9fafb;
+  color: #374151;
+  font-size: 1rem;
+  border-right: 1px solid #e5e7eb;
+}
+
+/* Input donde se escribe el monto */
+.aa-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: #f9fafb;
+  color: #374151; /* aquí forzamos texto oscuro para que se vea */
+  /* Ajustamos ligeramente el ancho para que no quede muy pegado al spinner */
+}
+
+/* En Chrome el “spinner” a veces tapa un poco el texto; reducimos padding-right: */
+.aa-input::-webkit-inner-spin-button,
+.aa-input::-webkit-outer-spin-button {
+  margin: 0;
+}
+
+.aa-input {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* 4.3) Fila “New Balance” */
+.aa-new-balance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.aa-new-balance-label {
+  font-size: 1rem;
+  color: #374151;
+}
+
+.aa-new-balance-amount {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #111827;
+}
+
+/* 5) Mensaje de error (rojo) */
+.aa-error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* 6) Botones “Confirm Addition” y “Cancel” */
+.aa-confirm-btn,
+.aa-cancel-btn {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  border: none;
+  box-sizing: border-box;
+}
+
+/* Confirm en gris (y en hover un gris más oscuro) */
+.aa-confirm-btn {
+  background-color: #d1d5db;
+  color: #374151;
+}
+
+.aa-confirm-btn:hover {
+  background-color: #9ca3af;
+}
+
+/* Deshabilitado */
+.aa-confirm-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Cancel en negro */
+.aa-cancel-btn {
+  background-color: #111827;
+  color: white;
+}
+
+.aa-cancel-btn:hover {
+  background-color: #1f2937;
+}
+
+/* Responsive: en pantallas < 768px todo se apila */
+@media (max-width: 768px) {
+  .aa-current-balance-card {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1rem;
+  }
+
+  .aa-balance-decoration-wrapper {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .aa-entry-card {
+    padding: 1rem;
+  }
+
+  .aa-input-wrapper {
+    flex-direction: row;
+  }
+
+  .aa-confirm-btn,
+  .aa-cancel-btn {
+    max-width: 100%;
+  }
+}

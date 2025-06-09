@@ -1,0 +1,92 @@
+/* Account.css */
+
+.account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.account-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 2rem;
+}
+
+/* Bloque de perfil (imagen + nombre) */
+.account-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.account-profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.account-username {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Opciones estáticas */
+.account-options {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.account-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.account-option:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.account-option span {
+  color: #111827;                 /* texto negro para que se vea */
+  font-size: 1rem;
+}
+
+.account-option-arrow {
+  font-size: 1.25rem;
+  color: #6b7280;
+}
+
+/* Botón “Log out” */
+.account-logout-btn {
+  background-color: #dc2626; /* rojo */
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.account-logout-btn:hover {
+  background-color: #b91c1c;
+}
