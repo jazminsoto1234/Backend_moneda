@@ -5,7 +5,7 @@ from database.db import db
 
 def test_register_and_login(client):
     # Registro
-    res = client.post("/register", json={
+    res = client.post("user/register", json={
         "username": "juan",
         "email": "juan@mail.com",
         "password": "1234"
@@ -15,41 +15,76 @@ def test_register_and_login(client):
     assert "access_token" in data
 
     # Login
-    res = client.post("/login", json={
+    res = client.post("user/login", json={
         "email": "juan@mail.com",
         "password": "1234"
     })
     assert res.status_code == 200
     assert "access_token" in res.get_json()
 
-def test_get_account(client):
-    # Preparamos usuario y cuenta
-    user = User(username="ana", email="ana@mail.com")
-    user.set_password("1234")
-    db.session.add(user)
-    db.session.commit()
-    account = Account(user_id=user.id, currency="USD", balance=100, nro_cuenta="123")
-    db.session.add(account)
-    db.session.commit()
 
-    token = create_access_token(identity=user.id)
+def test_get_account(client):
+    # Registrar el usuario
+    res = client.post("user/register", json={
+        "username": "ana",
+        "email": "ana@mail.com",
+        "password": "1234"
+    })
+    assert res.status_code == 201  # Verificamos que el registro fue exitoso
+
+    # Iniciar sesión usando email y password
+    res = client.post("user/login", json={
+        "email": "ana@mail.com",
+        "password": "1234"
+    })
+    assert res.status_code == 200  # Verificamos que el login fue exitoso
+    token = res.get_json().get("access_token")  # Extraemos el token de la respuesta
+
+    # Crear una cuenta para el usuario
+    
+
+    # Realizar la solicitud con el token de autorización
     headers = {"Authorization": f"Bearer {token}"}
-    res = client.get("/account", headers=headers)
-    assert res.status_code == 200
+    res = client.get("user/account", headers=headers)
+    assert res.status_code == 200  # Verificamos que la respuesta sea exitosa
     data = res.get_json()
-    assert data[0]["balance"] == 100
+    assert data[0]["balance"] == 0 # Verificamos que el balance es el esperado
+
 
 def test_addmoney(client):
-    user = User(username="luis", email="luis@mail.com")
-    user.set_password("1234")
-    db.session.add(user)
-    db.session.commit()
-    acc = Account(user_id=user.id, currency="PEN", balance=0, nro_cuenta="999")
-    db.session.add(acc)
-    db.session.commit()
+    # Registro
+    res = client.post("user/register", json={
+        "username": "juan",
+        "email": "juan@mail.com",
+        "password": "1234"
+    })
+    assert res.status_code == 201
+    data = res.get_json()
+    assert "access_token" in data
 
-    token = create_access_token(identity=user.id)
+    # Login
+    res = client.post("user/login", json={
+        "email": "juan@mail.com",
+        "password": "1234"
+    })
+    assert res.status_code == 200  # -> aca bota error porque no hay usuario registrado -> al parecer sale no autorizado pero no tiene el signo q requiere el jwt
+    token = res.get_json().get("access_token")  # Extraemos el token 
     headers = {"Authorization": f"Bearer {token}"}
-    res = client.patch("/addmoney", headers=headers, json={"id": acc.id, "amount": 100})
+
+    # Get account ID from list
+    res_account = client.get("user/account", headers=headers)
+    accounts = res_account.get_json()
+    assert res_account.status_code == 200
+    assert accounts, "No accounts found"
+    account_id = accounts[0]["id"]
+
+    # Add money
+    res = client.patch("user/addmoney", headers=headers, json={
+        "id": account_id,
+        "amount": 100
+    })
+
     assert res.status_code == 200
-    assert res.get_json()["new_balance"] == 100
+    data = res.get_json()
+    assert data["new_balance"] == 100
+    assert data["message"] == "Monto agregado exitosamente"
