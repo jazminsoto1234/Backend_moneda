@@ -1,0 +1,249 @@
+/* App.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: white;
+}
+
+
+body, html {
+  font-family: sans-serif;
+  min-height: 100vh;
+}
+
+/* SPLASH */
+
+.splash-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+  height: 100vh;
+  width: 100vw;
+}
+
+.title {
+  font-size: clamp(3rem, 5vw, 6rem);
+  color: white;
+  font-weight: bold;
+}
+
+/* WELCOME */
+
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.title-box {
+  background: linear-gradient(to bottom, #3b82f6, #60a5fa);
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 3rem 3rem;
+}
+
+.actions {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding-top: 3rem;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  width: 30%;
+  min-width: 250px;
+  max-width: 400px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-dark {
+  align-self: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.btn-outline {
+  border: 2px solid #1f2937;
+  background-color: white;
+  color: #1f2937;
+  width: 100%;
+  max-width: 300px;
+}
+
+.guest-link {
+  color: #0284c7;
+  font-size: 1rem;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.auth-screen {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 🔁 esto centra horizontalmente */
+  gap: 1rem;
+  padding: 4rem 2rem 3rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+.auth-title {
+  color: #111;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.auth-input {
+  padding: 0.9rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  width: 100%;
+  background-color: #f3f4f6;
+  color: #222;
+}
+
+.auth-options {
+  text-align: right;
+}
+
+.auth-link {
+  color: #6b7280;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.auth-link-colored {
+  color: #0284c7;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.auth-footer {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #6b7280;
+  font-weight: 500;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 0 0.75rem;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+/* SOCIAL BUTTONS */
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-btn {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.social-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.auth-input::placeholder {
+  color: #555;
+}
+
+.input-password-container {
+  position: relative;
+  width: 100%;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tipografía base y color de fondo del <body> */
+body, html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: #f9fafb; /* gris muy claro de página */
+  min-height: 100vh;
+}
+
+/* Asegurarse que los inputs y botones no arrastren outlines extraños */
+input, button {
+  font-family: inherit;
+  outline: none;
+}

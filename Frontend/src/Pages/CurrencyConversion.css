@@ -1,0 +1,265 @@
+/* CurrencyConversion.css */
+
+/* 1) Contenedor principal */
+.cc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+/* 2) Título */
+.cc-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 2rem;
+}
+
+/* 3) Caja de la cuenta actual */
+.cc-account-card {
+  width: 100%;
+  max-width: 800px;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.cc-account-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cc-account-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.cc-account-number,
+.cc-account-branch {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.cc-account-right {
+  display: flex;
+  align-items: center;
+}
+
+.cc-account-balance {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+/* 4) Caja de conversión */
+.cc-conversion-box {
+  width: 100%;
+  max-width: 800px;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 4.1) Agrupación “From” y “To” */
+.cc-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Etiqueta encima del input */
+.cc-label {
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* Wrapper para que el input y la moneda estén juntos */
+.cc-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Estilo común para ambos inputs */
+.cc-input-wrapper .cc-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* El span o botón que muestra la moneda actual */
+.cc-input-wrapper .cc-input-currency,
+.cc-input-wrapper .cc-currency-button {
+  padding: 0 1rem;
+  background-color: #f3f4f6;
+  color: #374151;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* Cuando “To” tiene dropdown */
+.cc-input-wrapper.cc-with-dropdown {
+  position: relative;
+}
+
+.cc-caret {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* 4.2) Icono de intercambio, centrado */
+.cc-swap-icon-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.cc-swap-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.cc-swap-icon:hover {
+  opacity: 1;
+}
+
+/* 4.3) Currency rate debajo */
+.cc-exchange-rate {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+/* 4.4) Botón “Exchange” */
+.cc-exchange-button {
+  margin-top: 1rem;
+  background-color: #3b82f6; /* azul celeste */
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cc-exchange-button:hover {
+  background-color: #2563eb;
+}
+
+/* 5) Dropdown superpuesto para elegir moneda */
+.cc-dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px); /* fondo borroso */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.cc-dropdown-list {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.cc-dropdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cc-dropdown-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.cc-dropdown-list ul {
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.cc-dropdown-item {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #374151;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cc-dropdown-item:hover {
+  background-color: #f3f4f6;
+}
+
+.cc-dropdown-item.selected {
+  background-color: #e0f2fe;
+  color: #1e40af;
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+  .cc-container {
+    padding: 1rem;
+  }
+
+  .cc-account-card,
+  .cc-conversion-box {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .cc-swap-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cc-exchange-button {
+    width: 100%;
+  }
+
+  .cc-error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+}

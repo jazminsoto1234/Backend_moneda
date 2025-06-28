@@ -1,0 +1,96 @@
+/* SelectAccount.css */
+
+.select-account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.select-account-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.select-account-username {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111827;
+  margin-top: 1rem;
+}
+
+.select-account-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 700px;
+  gap: 1rem;
+}
+
+.account-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.account-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.account-info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.account-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.account-balance {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.account-amount {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #2563eb;
+}
+
+.account-info-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.account-number {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.select-account-user-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+
+/* Responsive: en pantallas < 768px, reduce padding */
+@media (max-width: 768px) {
+  .account-card {
+    padding: 0.75rem 1rem;
+  }
+}

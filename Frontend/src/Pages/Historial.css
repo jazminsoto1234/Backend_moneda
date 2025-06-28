@@ -1,0 +1,137 @@
+/* Historial.css */
+
+.historial-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.historial-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.historial-empty {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.historial-error {
+  color: red;
+  font-size: 1rem;
+}
+
+/* Contenedor de la lista */
+.historial-list {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Cada transacción */
+.historial-item {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Encabezado: etiqueta + fecha + monto */
+.historial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* “Transferencia Enviada” / “Transferencia Recibida” */
+.historial-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Fecha */
+.historial-date {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Monto (rojo o verde) */
+.historial-amount {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Detalles de cuentas (dos columnas) */
+.historial-details {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.historial-detail-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.historial-detail-title {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.historial-detail-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Bloque “Conversión de moneda” */
+.historial-conversion {
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.historial-conversion-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0c4a6e;
+}
+
+.historial-conversion-rate {
+  font-size: 0.9rem;
+  color: #0c4a6e;
+}
+
+.historial-conversion-amount {
+  font-size: 0.9rem;
+  color: #0c4a6e;
+}
+
+/* Responsive: menos de 768px */
+@media (max-width: 768px) {
+  .historial-list {
+    max-width: 100%;
+  }
+
+  .historial-details {
+    flex-direction: column;
+  }
+}
